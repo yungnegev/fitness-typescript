@@ -7,7 +7,7 @@ import SponsorRedBull from "@/assets/SponsorRedBull.png"
 import SponsorForbes from "@/assets/SponsorForbes.png"
 import SponsorFortune from "@/assets/SponsorFortune.png"
 import AnchorLink from "react-anchor-link-smooth-scroll"
-
+import { motion as m } from "framer-motion"
 
 
 type Props = {
@@ -24,11 +24,24 @@ const Home = ({ setSelectedPage }: Props) => {
         className="gap-16 bg-gray-20 py-10 md:h-full md:pb-0"
         >
         {/* IMAGE AND MAIN HEADER */}
-        <div className="md:flex mx-auto w-5/6 items-center justify-center md:h-5/6">
+        <m.div 
+            className="md:flex mx-auto w-5/6 items-center justify-center md:h-5/6"
+            onViewportEnter={() => setSelectedPage(SelectedPage.Home)}
+            >
             {/* MAIN HEADER */}
             <div className=" z-10 mt-32 md:basis-3/5">
                 {/* HEADINGS */}
-                <div className="md:-mt-20">
+                <m.div 
+                    className="md:-mt-20"
+                    initial="hidden"
+                    whileInView="vidible"
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.5 }}
+                    variants={{
+                        hidden: { opacity: 0, x: -70 },
+                        vidible: { opacity: 1, x: 0 },
+                    }}
+                    >
                     <div className="relative">
                         <div className="before:absolute before:-top-20 md:before:content-evolvetext before:-left-20 before:z-[-1]">
                             <img src={HomePageText} alt="home-page-text" />
@@ -37,9 +50,19 @@ const Home = ({ setSelectedPage }: Props) => {
                     <p className="mt-8 text-sm">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, cumque recusandae! Similique blanditiis impedit aperiam. Omnis sit perferendis sapiente nemo magnam fuga, facilis, sed quas eius placeat doloribus? Quas, fugit?
                     </p>
-                </div>
+                </m.div>
                 {/* ACTIONS */}
-                <div className="mt-8 flex items-center gap-8">
+                <m.div 
+                    className="mt-8 flex items-center gap-8"
+                    initial="hidden"
+                    whileInView="vidible"
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ delay: 0.15, duration: 0.5 }}
+                    variants={{
+                        hidden: { opacity: 0, x: -70 },
+                        vidible: { opacity: 1, x: 0 },
+                    }}
+                    >
                     <ActionButton setSelectedPage={setSelectedPage}> 
                         Join Now 
                     </ActionButton>
@@ -50,13 +73,13 @@ const Home = ({ setSelectedPage }: Props) => {
                         >
                         <p>Learn More</p>
                     </AnchorLink>
-                </div>
+                </m.div>
             </div>
             {/* IMAGE */}
             <div className="flex basis-3/5 justify-center md:z-10 md:ml-40 md:mt-16 md:justify-items-end">
                 <img src={HomePageGraphic} alt="homepage-graphic" />
             </div>
-        </div>
+        </m.div>
         {/* SPONSORS */}
         {isAboveMediumScreens && (
             <div className="h-[150px] w-full bg-primary-100 py-10">
