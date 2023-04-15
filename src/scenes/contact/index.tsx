@@ -137,10 +137,10 @@ const Contact = ({ setSelectedPage }: Props) => {
             }}
           >
             <div className="md:before:content-evolvetext w-full before:absolute before:-bottom-20 before:-right-10 before:z-[-1]">
-              <img 
+              <img
                 className="w-full"
-                src={ContactUsPageGraphic} 
-                alt="image" 
+                src={ContactUsPageGraphic}
+                alt="image"
               />
             </div>
           </m.div>
